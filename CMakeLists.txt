@@ -56,7 +56,7 @@ set(PROJECT_OUTPUT ${CMAKE_PROJECT_NAME})
 add_executable(${PROJECT_OUTPUT} ${SOURCES})
 
 # Link the executable
-target_link_libraries(${PROJECT_OUTPUT} ${BASE_LIBRARIES} ${OPTIONAL_LIBS} -lreadline)
+target_link_libraries(${PROJECT_OUTPUT} ${BASE_LIBRARIES} ${OPTIONAL_LIBS} pthread)
 
 ########## Custom Targets ##########
 

@@ -298,7 +298,6 @@ static int serial_recieve(serial_t* s, uint8_t data[], int maxLength)
 static void serial_rx_callback(serial_t* s, char data[], int length)
 {
     //Put data into buffer.
-    //printf("Recieved: %d \"%s\"\r\n", length, data);
     int i;
     //Put data into buffer.
     for (i = 0; i < length; i++) {
@@ -314,8 +313,6 @@ static void *serial_data_listener(void *param)
     int err = 0;
     struct pollfd ufds;
     uint8_t buff[BUFF_SIZE];
-
-    printf("Starting listener.\r\n");
 
     //Retrieve paramaters and store locally.
     serial_t* serial = (serial_t*) param;
@@ -337,7 +334,6 @@ static void *serial_data_listener(void *param)
             if (count > 0) {
                 //Pad end of buffer to ensure there is a termination symbol.
                 buff[count] = '\0';
-                printf("Start: 0x%x\r\n", buff[0]);
                 // Call the serial callback.
                 serial_rx_callback(serial, (char *)buff, count);
                 //If an error occured.
